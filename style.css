@@ -652,7 +652,7 @@ header:hover{
 .delivery{
     padding: 100px 0;
 }
-.delivary-content{
+.delivery-content{
     display: flex;
 }
 .delivery-top-wrap{
@@ -689,80 +689,80 @@ header:hover{
 .delivery-top-address i{
     color: #0DB7EA;
 }
-.delivary-content-left{
+.delivery-content-left{
     width: 60%;
     padding-right: 12px;
 }
-.delivary-content-left p{
+.delivery-content-left p{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
-.delivary-content-left label{
+.delivery-content-left label{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     margin-bottom: 6px;
     display: block;
 }
-.delivary-content-left > p{
+.delivery-content-left > p{
     font-weight: bold;
 }
-.delivary-content-left-dangnhap{
+.delivery-content-left-dangnhap{
     display: flex;
     margin-top: 12px;
 }
-.delivary-content-left-dangnhap i{
+.delivery-content-left-dangnhap i{
     font-size: 12px;
     margin-right: 12px;
 }
-.delivary-content-left-khachle{
+.delivery-content-left-khachle{
     display: flex;
     margin-top: 12px 0;
 }
-.delivary-content-left-khachle input{
+.delivery-content-left-khachle input{
     margin-right: 12px;
 }
-.delivary-content-left-dangky{
+.delivery-content-left-dangky{
     display: flex;
     margin-bottom: 30px;
 }
-.delivary-content-left-dangky input{
+.delivery-content-left-dangky input{
     margin-right: 12px;
 }
-.delivary-content-left-input-top{
+.delivery-content-left-input-top{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
 }
-.delivary-content-left-input-top-item{
+.delivery-content-left-input-top-item{
     width: calc(50% - 12px);
 }
-.delivary-content-left-input-top-item input{
+.delivery-content-left-input-top-item input{
     width: 100%;
     height: 25px;
     border: 1px solid #dddddd;
     padding-left: 6px;
     margin-bottom: 5px;
 }
-.delivary-content-left-input-bottom input{
+.delivery-content-left-input-bottom input{
     width: 100%;
     height: 25px;
     border: 1px solid #dddddd;
     padding-left: 6px;
 }
-.delivary-content-left-button{
+.delivery-content-left-button{
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
 }
-.delivary-content-left-button p{
+.delivery-content-left-button p{
     display: inline-block;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
 }
-.delivary-content-left-button span{
+.delivery-content-left-button span{
     margin-right: 12px;
 }
-.delivary-content-left-button button{
+.delivery-content-left-button button{
     height: 35px;
     border: 2px solid black;
     padding-left: 6px;
@@ -773,48 +773,153 @@ header:hover{
     border: none;
     transition: all 0.3s ease;
 }
-.delivary-content-left-button button:hover{
+.delivery-content-left-button button:hover{
     background-color: rgb(108, 169, 15);
     color: black;
 }
-.delivary-content-right{
+.delivery-content-right{
     width: 40%;
     padding-left: 12px;
     border-left: 2px solid #dddddd;
     height: auto;
 }
-.delivary-content-right table{
+.delivery-content-right table{
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     text-align: center;
 }
-.delivary-content-right table tr th:first-child{
+.delivery-content-right table tr th:first-child{
     text-align: left;
 }
-.delivary-content-right table tr th{
+.delivery-content-right table tr th{
     padding-bottom: 12px;
     border-bottom: 2px solid #dddddd;
 }
-.delivary-content-right table tr th:last-child{
+.delivery-content-right table tr th:last-child{
     text-align: right;
 }
-.delivary-content-right table tr td{
+.delivery-content-right table tr td{
     padding: 6px 0;
 }
-.delivary-content-right table tr:nth-child(4){
+.delivery-content-right table tr:nth-child(4){
     border-top: 2px solid #dddddd;
 }
-.delivary-content-right table tr td:first-child{
+.delivery-content-right table tr td:first-child{
     text-align: left;
 }
-.delivary-content-right table tr td:last-child{
+.delivery-content-right table tr td:last-child{
     text-align: right;
 }
-.delivary-content-right table tr td p {
+.delivery-content-right table tr td p {
     display: inline-block;
     margin: 0;
     vertical-align: middle;
     line-height: 1.2; /* Căn chỉnh lại chiều cao dòng */
 }
 /* end delivery */
+/* payment */
+.payment{
+    padding: 100px 0;
+}
+.payment-top-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.payment-top{
+    height: 2px;
+    width: 70%;
+    background: #dddddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0 100px;
+}
+.payment-top-item{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    text-align: center;
+}
+.payment-top-item i{
+    color: #dddddd;
+}
+.payment-top-payment{
+    border: 1px solid #0DB7EA;
+}
+.payment-top-payment i{
+    color: #0DB7EA;
+}
+.payment-content{
+    display: flex;
+}
+.payment-content-left{
+    width: 60%;
+}
+.payment-content-left p,label{
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.payment-content-left-method-payment-item-img img{
+    height: 35px;
+}
+.payment-content-right{
+    width: 40%;
+    border-left: 2px solid #ddd;
+    padding-left: 12px;
+}
+.payment-content-right-button{
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px dashed #dddddd;
+}
+.payment-content-right-button input{
+    height: 30px;
+    width: 200px;
+    margin-right: 100px;
+    padding-left: 12px;
+}
+.payment-content-right-button button{
+    height: 30px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.payment-content-right-mnv{
+    margin-top: 20px;
+}
+.payment-content-right-mnv select{
+    height: 30px;
+    width: 100%;
+    color: #75758A;
+    padding-left: 12px;
+}
+.payment-content-right-payment{
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+}
+.payment-content-right-payment button{
+    height: 35px;
+    border: 2px solid black;
+    padding-left: 6px;
+    cursor: pointer;
+    padding: 6px 12px;
+    background-color: green;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+.payment-content-right-payment button:hover{
+    background-color: rgb(108, 169, 15);
+    color: black;
+}
+/* end payment */
