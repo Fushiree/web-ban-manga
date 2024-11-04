@@ -616,20 +616,21 @@ header:hover{
     cursor: pointer;
 }
 .cart-content-right-button button:first-child{
-    background: #ffff;
-    border: 1px solid black;
-    margin-right: 20px;
+    background-color: #ffff;
+    border: 2px solid black;
 }
 .cart-content-right-button button:first-child:hover{
-    background: #ddd;
+    background-color: black;
+    color: white;
 }
 .cart-content-right-button button:last-child{
-    background-color: black;
-    color: #fff;
+    background-color: green;
+    color: white;
+    justify-content: space-evenly;
     border: none;
 }
 .cart-content-right-button button:last-child:hover{
-    background-color: #dddddd;
+    background-color: rgb(108, 169, 15);
     color: black;
 }
 .cart-content-right-dangnhap{
