@@ -3,19 +3,18 @@ include "header.php";
 include "slider.php";
 include "class/cartegory-class.php";
  ?>
- <?php
- $cartegory = new Cartegory;
- if(!isset($_GET['cartegory_id']) || $_GET['cartegory_id']==NULL){
-    echo "window.location = 'cartegorylist.php'</script>";
- }
- else{
+<?php
+$cartegory = new Cartegory;
+if (!isset($_GET['cartegory_id']) || $_GET['cartegory_id'] == NULL) {
+    echo "<script>window.location = 'cartegorylist.php'</script>";
+} else {
     $cartegory_id = $_GET['cartegory_id'];
- }
-    $get_cartegory = $cartegory -> get_cartegory( cartegory_id: $cartegory_id );
-    if($get_cartegory){
-        $result = $get_cartegory ->fetch_assoc();
-    }
- ?>
+}
+$get_cartegory = $cartegory->get_cartegory($cartegory_id);
+if ($get_cartegory) {
+    $result = $get_cartegory->fetch_assoc();
+}
+?>
 
 <?php
 if($_SERVER['REQUEST_METHOD']=== 'POST'){

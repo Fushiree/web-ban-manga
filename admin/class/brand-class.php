@@ -3,14 +3,14 @@ include "database.php";
 ?>
 
 <?php
-class Cartegory{
+class brand{
     private $db;
 
     public function __construct(){
         $this->db = new Database();
     }
-    public function insert_cartegory($cartegory_name) {
-        $query = "INSERT INTO tbl_cartegory (cartegory_name) VALUES ('$cartegory_name')";
+    public function insert_brand($cartegory_id, $brand_name) {
+        $query = "INSERT INTO tbl_brand (cartegory_id,Brand_name) VALUES ('$cartegory_id','$brand_name')";
         $result = $this ->db->insert($query);
         return $result;
     }  

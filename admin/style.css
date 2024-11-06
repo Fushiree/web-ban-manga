@@ -75,3 +75,10 @@ table{
     border-collapse: collapse;
 }
 /* end cartegory lish */
+/* brand add */
+.admin-content-right-cartegory-add select{
+    height: 30px;
+    width: 200px;
+    margin-top: 10px;
+}
+/* end brand add */
