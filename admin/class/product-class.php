@@ -15,11 +15,6 @@ class brand{
         return $result;
     }  
  
-    public function show_cartegory(){
-        $query = "SELECT * FROM tbl_cartegory ORDER BY cartegory_id DESC";
-        $result = $this ->db->select($query);
-        return $result;
-    }   
     public function show_brand(){
         // $query = "SELECT * FROM tbl_brand ORDER BY brand_id DESC";
         $query = "SELECT tbl_brand.*,tbl_cartegory.cartegory_name

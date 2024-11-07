@@ -1,34 +1,36 @@
 <?php
 include "header.php";
 include "slider.php";
-include "class/cartegory-class.php";
+include "class/brand-class.php";
  ?>
 <?php
-$cartegory = new Cartegory;
-$show_cartegory = $cartegory ->show_cartegory();
+$brand = new brand;
+$show_brand = $brand ->show_brand();
 ?>
 
 <div class="admin-content-right">
 <div class="admin-content-right-cartegory-list">
-                <h1>Danh sách danh mục</h1>
+                <h1>Danh sách Loại sản phẩm</h1>
                 <table>
                     <tr>
                         <th>Stt</th>
-                        <th>Cartegory id</th>
+                        <th>Brand id</th>
                         <th>Danh mục</th>
+                        <th>Loại sản phẩm</th>
                         <th>Tùy biến</th>
                     </tr>
                     <?php
-                    if($show_cartegory){
+                    if($show_brand){
                         $i=0;// Khởi tạo biến đếm Stt
-                        while($result = $show_cartegory->fetch_assoc()){
+                        while($result = $show_brand->fetch_assoc()){
                             $i++;// Tăng dần biến đếm
                      ?>
                     <tr>
                         <td><?php echo $i ?></td>
-                        <td><?php echo $result['cartegory_id'] ?></td>
+                        <td><?php echo $result['brand_id'] ?></td>
                         <td><?php echo $result['cartegory_name'] ?></td>
-                        <td><a href="cartegoryedit.php?cartegory_id=<?php echo $result['cartegory_id'] ?>">Sửa</a> <a href="cartegorydelete.php?cartegory_id=<?php echo $result['cartegory_id'] ?>">Xóa</a></td>
+                        <td><?php echo $result['brand_name'] ?></td>
+                        <td><a href="brandedit.php?brand_id=<?php echo $result['brand_id'] ?>">Sửa</a> <a href="branddelete.php?brand_id=<?php echo $result['brand_id'] ?>">Xóa</a></td>
                     </tr>
                     <?php
                         }
