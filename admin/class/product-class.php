@@ -14,6 +14,11 @@ class product{
         $result = $this ->db->select($query);
         return $result;
     } 
+    public function show_brand_ajax($cartegory_id){
+        $query = "SELECT * FROM tbl_brand WHERE cartegory_id = '$cartegory_id'";
+        $result = $this ->db->select($query);
+        return $result;
+    }
     public function insert_product() {
         $product_name = $_POST["product_name"];
         $cartegory_id = $_POST["cartegory_id"];

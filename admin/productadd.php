@@ -23,7 +23,7 @@ include "class/product-class.php";
                     <label for="">Nhập tên sản phẩm <span style="color: red;">*</span></label>
                     <input name="product_name" required type="text" >
                     <label for="">Chọn danh mục <span style="color: red;">*</span></label>
-                    <select name="cartegory_id" id="">
+                    <select name="cartegory_id" id="cartegory_id">
                     <option value="">---Chọn---</option>
                         <?php
                         $show_cartegory = $product ->show_cartegory();
@@ -37,18 +37,9 @@ include "class/product-class.php";
                          ?>
                     </select>
                     <label for="">Chọn loại sản phẩm <span style="color: red;">*</span></label>
-                    <select name="brand_id" id="">
+                    <select name="C" id="brand_id">
                         <option value="">Chọn</option>
-                        <?php
-                        $show_brand = $product ->show_brand();
-                        if($show_brand){while($result = $show_brand -> fetch_assoc()){
-
                         
-                         ?>
-                        <option value="<?php echo $result['brand_id'] ?>"><?php echo $result['brand_name'] ?></option>
-                        <?php
-                        }}
-                         ?>
                     </select>
                     <label for="">Nhập giá sản phẩm <span style="color: red;">*</span></label>
                     <input name="product_price" required type="text">
@@ -76,4 +67,16 @@ include "class/product-class.php";
             console.error(error);
         });
 </script>
+<script>
+    $(document).ready(function() {
+        $("#cartegory_id").change(function() {
+            // alert($(this).val())
+            var x = $(this).val(); // Lấy giá trị của cartegory_id
+            $.get("productadd-ajax.php", { cartegory_id: x }, function(data) {
+                $("#brand_id").html(data); // Cập nhật nội dung của phần tử có ID brand_id
+            });
+        });
+    });
+</script>
+
 </html>
