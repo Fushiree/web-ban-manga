@@ -19,6 +19,91 @@ class product{
         $result = $this ->db->select($query);
         return $result;
     }
+    public function show_product() {
+        $query = "SELECT * FROM tbl_product ORDER BY product_id DESC";  // Truy vấn danh sách sản phẩm
+        $result = $this->db->select($query);  // Thực thi truy vấn
+        return $result;  // Trả về kết quả
+    }
+    public function get_cartegory_name($cartegory_id) {
+        $query = "SELECT cartegory_name FROM tbl_cartegory WHERE cartegory_id = '$cartegory_id'";
+        $result = $this->db->select($query);
+    
+        if ($result && $result->num_rows > 0) {
+            return $result->fetch_assoc();  // Trả về mảng với 'cartegory_name'
+        }
+    
+        // Nếu không có kết quả, trả về null hoặc mảng với giá trị mặc định
+        return null;  // Hoặc ['cartegory_name' => 'Không có danh mục']
+    }
+    
+    
+    public function get_brand_name($brand_id) {
+        $query = "SELECT brand_name FROM tbl_brand WHERE brand_id = '$brand_id'";
+        $result = $this->db->select($query);
+        if ($result) {
+            return $result->fetch_assoc();  // Trả về tên thương hiệu
+        }
+        return null; // Trường hợp không tìm thấy
+    }
+    // Lấy thông tin sản phẩm dựa trên product_id
+public function get_product($product_id) {
+    $query = "SELECT * FROM tbl_product WHERE product_id = '$product_id'";
+    $result = $this->db->select($query);
+    return $result;
+}
+public function delete_product($product_id) {
+    // Chuẩn bị câu lệnh SQL
+    $query = "DELETE FROM tbl_product WHERE product_id = '$product_id'";
+    
+    // Gọi phương thức delete từ lớp Database với câu truy vấn và tham số
+    $result = $this->db->delete($query);
+
+    // Chuyển hướng sau khi xóa
+    header('location: productlist.php');
+    return $result;
+}
+public function update_product($product_id, $product_name, $product_desc, $product_img_desc) {
+    // Cập nhật thông tin sản phẩm
+    $query = "UPDATE tbl_product SET 
+                product_name = '$product_name',
+                product_desc = '$product_desc'
+              WHERE product_id = '$product_id'";
+    $result = $this->db->update($query);
+
+    // Nếu có ảnh mô tả mới
+    if (!empty($product_img_desc['name'][0])) {
+        $uploaded_files = $this->upload_product_images($product_img_desc, $product_id);
+        // Cập nhật ảnh mô tả mới vào cơ sở dữ liệu
+        foreach ($uploaded_files as $file) {
+            $query = "INSERT INTO tbl_product_img_desc (product_id, product_img_desc) 
+                      VALUES ('$product_id', '$file')";
+            $this->db->insert($query);
+        }
+    }
+
+    return $result;
+}
+
+// Phương thức tải ảnh lên
+private function upload_product_images($product_img_desc, $product_id) {
+    $uploaded_files = [];
+    $file_names = $product_img_desc['name'];
+    $file_tmp = $product_img_desc['tmp_name'];
+
+    foreach ($file_names as $key => $value) {
+        $target_dir = "uploads/";
+        $file_name = basename($value);
+        $target_file = $target_dir . $file_name;
+
+        if (move_uploaded_file($file_tmp[$key], $target_file)) {
+            $uploaded_files[] = $file_name;
+        }
+    }
+    
+    return $uploaded_files;
+}
+
+            
     public function insert_product() {
         $product_name = $_POST["product_name"];
         $cartegory_id = $_POST["cartegory_id"];

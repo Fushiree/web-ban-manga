@@ -8,7 +8,6 @@ include "class/product-class.php";
  $product = new product;
  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $product->insert_product($_POST, $_FILES);
-
  }
  ?>
 
