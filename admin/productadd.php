@@ -7,11 +7,8 @@ include "class/product-class.php";
  <?php
  $product = new product;
  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // var_dump($_POST, $_FILES);
-    // echo'<pre>';
-    // echo print_r($_FILES['product_img_desc']['name']);
-    // echo'</pre>';
     $result = $product->insert_product($_POST, $_FILES);
+
  }
  ?>
 
@@ -37,7 +34,7 @@ include "class/product-class.php";
                          ?>
                     </select>
                     <label for="">Chọn loại sản phẩm <span style="color: red;">*</span></label>
-                    <select name="C" id="brand_id">
+                    <select name="brand_id" id="brand_id">
                         <option value="">Chọn</option>
                         
                     </select>
@@ -60,13 +57,7 @@ include "class/product-class.php";
 
 
 
-<script>
-    ClassicEditor
-        .create(document.querySelector('#editor1'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
+
 <script>
     $(document).ready(function() {
         $("#cartegory_id").change(function() {

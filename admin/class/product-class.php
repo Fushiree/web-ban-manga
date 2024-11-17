@@ -22,12 +22,12 @@ class product{
     public function insert_product() {
         $product_name = $_POST["product_name"];
         $cartegory_id = $_POST["cartegory_id"];
-        $brand_id = $_POST["brand_id"];
+        $brand_id = isset($_POST["brand_id"]) ? $_POST["brand_id"] : null;  // Kiểm tra xem có tồn tại 'brand_id' hay không
         $product_price = $_POST["product_price"];
         $product_price_new = $_POST["product_price_new"];
         $product_desc = $_POST["product_desc"];
         $product_img = $_FILES['product_img']['name'];
-        move_uploaded_file($_FILES['product_img']['tmp_name'], "uploads/product" . $_FILES['product_img']['name']);
+        move_uploaded_file($_FILES['product_img']['tmp_name'], "uploads/" . $_FILES['product_img']['name']);
     
         $query = "INSERT INTO tbl_product (
             product_name,
@@ -58,7 +58,7 @@ class product{
                 $filename = $_FILES['product_img_desc']['name'];
                 $filetmp = $_FILES['product_img_desc']['tmp_name'];
                 foreach ($filename as $key => $value) {
-                    $destination = "uploads/product" . $value;
+                    $destination = "uploads/" . $value;
                     if (move_uploaded_file($filetmp[$key], $destination)) {
                         $query = "INSERT INTO tbl_product_img_desc (product_id, product_img_desc) VALUES ('$product_id', '$value')";
                         $this->db->insert($query);
@@ -68,6 +68,7 @@ class product{
         }
         return $result;
     }
+    
      
     
 
