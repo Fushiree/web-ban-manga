@@ -15,39 +15,35 @@ include("connect.php"); // Kết nối cơ sở dữ liệu
 <body>
     <?php include("header.php"); ?>
 
-    <div class="container mt-5">
+    <div class="category-right-content">
         <?php
         // Lấy giá trị tìm kiếm
         $search = isset($_GET['search']) ? mysqli_real_escape_string($link, $_GET['search']) : '';
 
         // Truy vấn SQL
         if (!empty($search)) {
-            $sl1 = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
-            $result = mysqli_query($link, $sl1);
+            $sql = "SELECT * FROM tbl_product WHERE product_name LIKE '%$search%'";
+            $result = mysqli_query($link, $sql);
 
-            if (mysqli_num_rows($result) > 0) {
-                echo '<div class="row">';
-                while ($row = mysqli_fetch_array($result)) {
-                    ?>
-                    <div class="category-right-content">
-                    <div class="category-right-content-item">
-                        <a href="/product.html">
-                            <img src="/admin/uploads/<?php echo $row['product_img']; ?>">
-                            <h1><?php echo $row['product_name']; ?></h1>
-                            <p><?php echo $row['product_price']; ?><sup>đ</sup></p>
-                        </a>
-                    </div>
-                    <!-- Thêm các sản phẩm khác tại đây -->
-                </div>
-                    <?php
+            if ($result && mysqli_num_rows($result) > 0) {
+                // Lặp qua từng sản phẩm và hiển thị
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="category-right-content-item">';
+                    echo '<a href="product.php?id=' . $row["product_id"] . '">'; // Thêm ID sản phẩm vào URL
+                    echo '<img src="/admin/uploads/' . $row["product_img"] . '" alt="Product Image">';
+                    echo '<h1>' . $row["product_name"] . '</h1>';
+                    echo '<p>' . number_format($row["product_price"], 0, ',', '.') . '<sup>đ</sup></p>';
+                    echo '</a>';
+                    echo '</div>';
                 }
-                echo '</div>';
             } else {
-                echo "<p>Không tìm thấy sản phẩm nào phù hợp với từ khóa: <b>$search</b></p>";
+                echo "<p>Không có sản phẩm nào.</p>";
             }
+            mysqli_free_result($result); // Giải phóng bộ nhớ
         } else {
-            echo "<p>Hãy nhập từ khóa để tìm kiếm.</p>";
+            echo "<p>Vui lòng nhập từ khóa tìm kiếm.</p>";
         }
+        mysqli_close($link); // Đóng kết nối cơ sở dữ liệu
         ?>
     </div>
 
