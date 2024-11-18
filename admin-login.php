@@ -3,18 +3,18 @@ session_start();
 include("connect.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = mysqli_real_escape_string($link, $_POST['username']);
+    $adminname = mysqli_real_escape_string($link, $_POST['adminname']);
     $password = mysqli_real_escape_string($link, $_POST['password']);
 
-    $sql = "SELECT * FROM tbl_user WHERE username = '$username'";
+    $sql = "SELECT * FROM tbl_admin WHERE adminname = '$adminname'";
     $result = mysqli_query($link, $sql);
 
     if (mysqli_num_rows($result) == 1) {
-        $user = mysqli_fetch_assoc($result);
-        if (password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['username'] = $user['username'];
-            header("Location: index.php");
+        $admin = mysqli_fetch_assoc($result);
+        if (password_verify($password, $admin['password'])) {
+            $_SESSION['admin_id'] = $admin['admin_id'];
+            $_SESSION['adminname'] = $admin['adminname'];
+            header("Location: /admin/cartegoryadd.php");
             exit();
         } else {
             $error_message = "Mật khẩu không đúng!";
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng nhập</title>
+    <title>Đăng nhập Admin</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -128,16 +128,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container">
         <div class="login-container">
-            <h2>Đăng nhập</h2>
+            <h2>Đăng nhập Admin</h2>
 
             <?php if (isset($error_message)): ?>
                 <p class="error-message"><?php echo $error_message; ?></p>
             <?php endif; ?>
 
-            <form action="login.php" method="POST">
+            <form action="admin-login.php" method="POST">
                 <div class="form-group">
-                    <label for="username">Tên đăng nhập:</label>
-                    <input type="text" name="username" id="username" placeholder="Nhập tên đăng nhập" required>
+                    <label for="adminname">Tên đăng nhập:</label>
+                    <input type="text" name="adminname" id="adminname" placeholder="Nhập tên đăng nhập" required>
                 </div>
 
                 <div class="form-group">
@@ -147,9 +147,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <button type="submit" class="btn">Đăng nhập</button>
             </form>
-
-            <p class="register-link">Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a></p>
-            <p class="register-link">Bạn là Admin <a href="admin-login.php">Đăng nhập Admin</a></p>
         </div>
     </div>
 </body>

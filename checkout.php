@@ -65,24 +65,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="/picture/logo.jpg" alt="Logo"></a>
-        </div>
-        <div class="menu">
-            <li><a href="#">Danh mục</a></li>
-            <li><a href="#">Khuyến mãi</a></li>
-            <li><a href="#">Sản phẩm</a></li>
-        </div>
-        <div class="orther">
-            <li><input placeholder="Tìm kiếm" type="text"></li>
-            <li><a href="profile.php"><i class="fa-solid fa-user"></i></a></li>
-            <li><a href="cart.php"><i class="fa-solid fa-bag-shopping"></i></a></li>
-        </div>
-    </header>
+    <?php 
+    include("product-head.php");
+    ?>
     <!-- Checkout Section -->
+    <div class="container" style="margin-top: 100px;">
+        <div class="delivery-top-wrap">
+            <div class="delivery-top">
+                <div class="delivery-top-cart delivery-top-item">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="delivery-top-address delivery-top-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="delivery-top-payment delivery-top-item">
+                    <i class="fa-solid fa-money-check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="checkout">
-        <div class="container">
+        <div class="container" >
             <h2>Thông tin giao hàng</h2>
             <?php if (isset($error_message)) { ?>
                 <div class="alert alert-danger"><?php echo $error_message; ?></div>
@@ -115,17 +118,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </section>
     <!-- Footer -->
-    <footer>
-        <div class="footer-top">
-            <li><a href="">Liên hệ</a></li>
-            <li><a href="">Tuyển dụng</a></li>
-            <li><a href="">Giới thiệu</a></li>
-            <li>
-                <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            </li>
-        </div>
-    </footer>
+    <?php 
+    include("footer.php");
+    ?>
 </body>
+<script>
+    const header = document.querySelector("header")
+    window.addEventListener("scroll",function(){
+        x = window.pageYOffset
+        if(x>0){
+            header.classList.add("sticky")
+        }
+        else{
+            header.classList.remove("sticky")
+        }
+    })
+</script>
 </html>

@@ -10,5 +10,5 @@
 </head>
 <body>
     <header>
-        <h1>Top</h1>
+        <h1>Trang Admin</h1>
     </header>

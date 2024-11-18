@@ -16,7 +16,7 @@ include("connect.php");
             <div class="cartegory-right">
                 <div class="cartegory-right-top">
                     <div class="cartegory-right-top-item">
-                        <p>Trang chủ</p>
+                        <p>Kim Đồng</p>
                     </div>
                     <div class="cartegory-right-top-item">
                         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down"></i></button>

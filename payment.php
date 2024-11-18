@@ -61,50 +61,27 @@ $order = mysqli_fetch_assoc($order_result);
 </head>
 <body>
     <!-- Menu -->
-    <header>
-        <div class="logo">
-            <a href="index.php"><img src="/picture/logo.jpg"></a>
-        </div>
-        <div class="menu">
-            <li><a href="#">NBX Kim Đồng</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Truyện mới về</a></li>
-                    <li><a href="#">Truyện hot</a> </li>
-                    <li><a href="#">Truyện giảm giá</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Nxb Trẻ</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Truyện mới về</a></li>
-                    <li><a href="#">Truyện hot</a> </li>
-                    <li><a href="#">Truyện giảm giá</a></li>
-                </ul>
-            </li>
-            <li><a href="#">Ipm</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Truyện mới về</a></li>
-                    <li><a href="#">Truyện hot</a> </li>
-                    <li><a href="#">Truyện giảm giá</a></li>
-                </ul>
-            </li>
-            <li><a href="#">AZ</a>
-                <ul class="sub-menu">
-                    <li><a href="#">Truyện mới về</a></li>
-                    <li><a href="#">Truyện hot</a> </li>
-                    <li><a href="#">Truyện giảm giá</a></li>
-                </ul>
-            </li>
-        </div>
-        <div class="orther">
-            <li><input placeholder="Tìm kiếm" type="text"></li>
-            <li><div class="fs-3"><i class="fa-solid fa-magnifying-glass"></i></div></li>
-            <li><div class="fs-3"><i class="fa-solid fa-user"></i></div></li>
-            <a href="/cart.php"><li><div class="fs-3"><i class="fa-solid fa-bag-shopping"></i></div></li></a>
-        </div>
-    </header>
+    <?php 
+    include "product-head.php";
+    ?>
     <!-- End Menu -->
 
     <!-- Payment Section -->
+    <div class="container" style="margin-top: 100px;>
+        <div class="payment-top-wrap">
+            <div class="payment-top">
+                <div class="payment-top-cart payment-top-item">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                </div>
+                <div class="payment-top-address payment-top-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="payment-top-payment payment-top-item">
+                    <i class="fa-solid fa-money-check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="payment">
         <div class="container">
             <h1 class="mt-5">Thông tin thanh toán</h1>

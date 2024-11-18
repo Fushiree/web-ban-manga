@@ -6,7 +6,7 @@ include("connect.php");
 <section class="cartegory">
     <div class="container">
         <div class="cartegory-top">
-            <p>Trang chủ</p> <span>&#8594;</span> <P>Kim Đồng</P>
+            <p>Trang chủ</p> <span>&#8594;</span> <P>Trẻ</P>
         </div>
     </div>
    <?php 
@@ -16,7 +16,7 @@ include("connect.php");
             <div class="cartegory-right">
                 <div class="cartegory-right-top">
                     <div class="cartegory-right-top-item">
-                        <p>Trang chủ</p>
+                        <p>Trẻ</p>
                     </div>
                     <div class="cartegory-right-top-item">
                         <button><span>Bộ lọc</span><i class="fa-solid fa-sort-down"></i></button>

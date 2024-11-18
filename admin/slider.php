@@ -19,5 +19,7 @@
                         <li><a href="productlist.php">Danh sách sản phẩm</a></li>
                     </ul>
                 </li>
+                <li><a href="/admin-register.php">Đăng ký Admin</a>
+                </li>
             </ul>
         </div>
