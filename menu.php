@@ -12,18 +12,10 @@
             <!-- danh sách tùy chọn -->
             <div class="cartegory-left">
                 <ul>
-                    <li class="cartegory-left-li"><a href="/Kimdong.php">Kim Đồng</a>
-                        
-                    </li>
-                    <li class="cartegory-left-li"><a href="/Tre.php">Trẻ</a>
-                        
-                    </li>
-                    <li class="cartegory-left-li"><a href="/Ipm.php">Ipm</a>
-                        
-                    </li>
-                    <li class="cartegory-left-li "><a href="/AZ.php">AZ</a>
-                        
-                    </li>
+                    <li class="cartegory-left-li"><a href="index.php?category=KimDong">Kim Đồng</a></li>
+                    <li class="cartegory-left-li"><a href="index.php?category=Tre">Trẻ</a></li>
+                    <li class="cartegory-left-li"><a href="index.php?category=Ipm">Ipm</a></li>
+                    <li class="cartegory-left-li"><a href="index.php?category=AZ">AZ</a></li>
                 </ul>
             </div>
 </body>

@@ -150,11 +150,18 @@ if (isset($_GET['id'])) {
     </div>
     <div class="product-content">
         <?php
-        // Truy vấn các sản phẩm liên quan (cùng loại sản phẩm hoặc cùng thương hiệu)
-        $related_sql = "SELECT * FROM tbl_product WHERE product_id != $product_id LIMIT 4";
+        // Lấy cartegory_id từ sản phẩm hiện tại
+        $cartegory_id = $product['cartegory_id'];
+
+        // Truy vấn các sản phẩm liên quan
+        $related_sql = "SELECT * FROM tbl_product WHERE cartegory_id = $cartegory_id AND product_id != $product_id LIMIT 5";
         $related_result = mysqli_query($link, $related_sql);
-        if (mysqli_num_rows($related_result) > 0) {
-            while($related_product = mysqli_fetch_assoc($related_result)) {
+
+        // Kiểm tra lỗi trong truy vấn SQL
+        if (!$related_result) {
+            echo '<p>Truy vấn thất bại: ' . mysqli_error($link) . '</p>';
+        } elseif (mysqli_num_rows($related_result) > 0) {
+            while ($related_product = mysqli_fetch_assoc($related_result)) {
                 echo '<div class="product-related-item">';
                 echo '<a href="product.php?id=' . $related_product["product_id"] . '">';
                 echo '<img src="/admin/uploads/' . $related_product['product_img'] . '" alt="">';
@@ -171,6 +178,7 @@ if (isset($_GET['id'])) {
 </section>
 
 <!-- end product-related -->
+
 <?php 
 include("footer.php");
 ?>
