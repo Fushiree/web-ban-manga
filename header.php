@@ -39,10 +39,16 @@
     </form>
     
     <!-- Biểu tượng user -->
+    <a href="/order_details.php">
     <li><div class="fs-3"><i class="fa-solid fa-user"></i></div></li>
+    </a>
     <!-- Giỏ hàng -->
     <a href="/cart.php">
         <li><div class="fs-3"><i class="fa-solid fa-bag-shopping"></i></div></li>
+    </a>
+    <!-- Nút đăng xuất -->
+    <a href="logout.php">
+        <li><div class="fs-3"><i class="fa-solid fa-sign-out-alt"></i></div></li>
     </a>
 </div>
 

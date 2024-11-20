@@ -21,5 +21,8 @@
                 </li>
                 <li><a href="/admin-register.php">Đăng ký Admin</a>
                 </li>
+                </li>
+                <li><a href="/index.php">Trang chủ</a>
+                </li>
             </ul>
         </div>

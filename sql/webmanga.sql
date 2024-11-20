@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2024 lúc 10:12 AM
+-- Thời gian đã tạo: Th10 20, 2024 lúc 06:22 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -42,7 +42,8 @@ CREATE TABLE `tbl_admin` (
 
 INSERT INTO `tbl_admin` (`admin_id`, `adminname`, `password`, `email`, `name`, `creat_at`) VALUES
 (1, 'Quan1', '$2y$10$upHobYfBhlRQUwuGiJnISOymXe92V8/yrl6DUAZdF0fEjYKp5Ms5G', 'quannro2k004@gmail.com', 'Fushiree1', '2024-11-18 17:56:44'),
-(2, 'Quan2', '$2y$10$M.H4S6LVTLOYE0.9g1W7Q.xOSjoRucISoF5VR.p0fuLrTJ7GN518i', 'quannro2k0034@gmail.com', 'Fushiree1', '2024-11-18 17:58:36');
+(2, 'Quan2', '$2y$10$M.H4S6LVTLOYE0.9g1W7Q.xOSjoRucISoF5VR.p0fuLrTJ7GN518i', 'quannro2k0034@gmail.com', 'Fushiree1', '2024-11-18 17:58:36'),
+(3, 'quan3', '$2y$10$PfP3o15IMBXBuGE9ig/w1eTYnBFegT3yEbiZUN1jlAw9NKOiecl4y', 'quannro2k343@gmail.com', 'Fushiree2', '2024-11-19 12:09:39');
 
 -- --------------------------------------------------------
 
@@ -87,13 +88,6 @@ CREATE TABLE `tbl_cart` (
   `added_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_cart`
---
-
-INSERT INTO `tbl_cart` (`cart_id`, `user_id`, `product_id`, `quantity`, `added_date`) VALUES
-(13, 5, 57, 1, '2024-11-19 08:25:25');
-
 -- --------------------------------------------------------
 
 --
@@ -119,6 +113,28 @@ INSERT INTO `tbl_cartegory` (`cartegory_id`, `cartegory_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Cấu trúc bảng cho bảng `tbl_comments`
+--
+
+CREATE TABLE `tbl_comments` (
+  `id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `comment` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_comments`
+--
+
+INSERT INTO `tbl_comments` (`id`, `product_id`, `user_id`, `name`, `comment`, `created_at`) VALUES
+(1, 33, 5, 'Guest', 'asdfgnmwfg', '2024-11-20 04:40:18');
+
+-- --------------------------------------------------------
+
+--
 -- Cấu trúc bảng cho bảng `tbl_order`
 --
 
@@ -137,6 +153,16 @@ CREATE TABLE `tbl_order` (
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`order_id`, `user_id`, `customer_name`, `phone_number`, `city`, `district`, `address`, `total_price`, `vat`, `order_date`, `email`, `payment_method`) VALUES
+(10, 5, 'Trần Khắc Quân', '0857410081', 'Trành phố Hồ Chí Minh', 'Bình thạnh', '4yrtyoupl;', 77000.00, 2000.00, '2024-11-20 04:51:33', '', 'Cash'),
+(11, 5, 'Trần Khắc Quân', '0857410081', 'Trành phố Hồ Chí Minh', 'Bình thạnh', '\\kl', 77000.00, 2000.00, '2024-11-20 04:53:22', '', 'Cash'),
+(12, 5, 'Trần Khắc Quân', '0857410081', 'Trành phố Hồ Chí Minh', 'Bình thạnh', 'rdfjgkhlj,.', 77000.00, 2000.00, '2024-11-20 05:12:42', '', ''),
+(13, 5, 'Trần Khắc Quân', '0857410081', 'Trành phố Hồ Chí Minh', 'Bình thạnh', 'rdfjgkhlj,.', 77000.00, 2000.00, '2024-11-20 05:15:59', '', 'Cash');
+
 -- --------------------------------------------------------
 
 --
@@ -148,8 +174,17 @@ CREATE TABLE `tbl_order_details` (
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
-  `price` decimal(10,2) NOT NULL
+  `product_price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_order_details`
+--
+
+INSERT INTO `tbl_order_details` (`detail_id`, `order_id`, `product_id`, `quantity`, `product_price`) VALUES
+(10, 10, 33, 1, 0.00),
+(11, 11, 68, 1, 0.00),
+(12, 13, 69, 5, 0.00);
 
 -- --------------------------------------------------------
 
@@ -237,6 +272,35 @@ CREATE TABLE `tbl_product_img_desc` (
 --
 
 INSERT INTO `tbl_product_img_desc` (`product_id`, `product_img_desc`) VALUES
+(7, 'Screenshot 2024-11-01 095428.png'),
+(7, 'Screenshot 2024-11-03 145756.png'),
+(7, 'Screenshot 2024-11-05 131018.png'),
+(7, 'Screenshot 2024-11-05 212642.png'),
+(7, 'Screenshot 2024-11-05 212705.png'),
+(7, 'Screenshot 2024-11-05 212802.png'),
+(8, 'Screenshot 2024-11-01 095428.png'),
+(8, 'Screenshot 2024-11-03 145756.png'),
+(8, 'Screenshot 2024-11-05 131018.png'),
+(15, 'anh mo ta 1.jpg'),
+(15, 'anh mo ta 2.png'),
+(15, 'anh mo ta 3.png'),
+(16, 'anh mo ta 1.jpg'),
+(16, 'anh mo ta 2.png'),
+(16, 'anh mo ta 3.png'),
+(18, 'Screenshot 2024-11-05 212842.png'),
+(19, 'Screenshot 2024-11-05 212842.png'),
+(20, 'Screenshot 2024-11-05 212842.png'),
+(22, 'Screenshot 2024-11-05 212842.png'),
+(23, 'Screenshot 2024-11-05 212802.png'),
+(24, 'anh dai dien.png'),
+(25, 'anh dai dien.png'),
+(26, 'anh mo ta 1.jpg'),
+(27, 'IMG_20241117_173509.jpg'),
+(27, 'IMG_20241117_173526.jpg'),
+(27, 'IMG_20241117_173536.jpg'),
+(28, 'IMG_20241117_173526.jpg'),
+(29, 'IMG_20241117_173526.jpg'),
+(30, 'IMG_20241118_100756.jpg'),
 (31, 'yot1mota.jpg'),
 (31, 'yot1mota1.jpg'),
 (32, 'yot1.jpg'),
@@ -365,6 +429,14 @@ ALTER TABLE `tbl_cartegory`
   ADD PRIMARY KEY (`cartegory_id`);
 
 --
+-- Chỉ mục cho bảng `tbl_comments`
+--
+ALTER TABLE `tbl_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `user_id` (`user_id`);
+
+--
 -- Chỉ mục cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
@@ -400,7 +472,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT cho bảng `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_brand`
@@ -412,7 +484,7 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_cartegory`
@@ -421,16 +493,22 @@ ALTER TABLE `tbl_cartegory`
   MODIFY `cartegory_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
+-- AUTO_INCREMENT cho bảng `tbl_comments`
+--
+ALTER TABLE `tbl_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_order_details`
 --
 ALTER TABLE `tbl_order_details`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
@@ -454,6 +532,13 @@ ALTER TABLE `tbl_user`
 ALTER TABLE `tbl_cart`
   ADD CONSTRAINT `tbl_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`),
   ADD CONSTRAINT `tbl_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`product_id`);
+
+--
+-- Các ràng buộc cho bảng `tbl_comments`
+--
+ALTER TABLE `tbl_comments`
+  ADD CONSTRAINT `tbl_comments_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `tbl_product` (`product_id`),
+  ADD CONSTRAINT `tbl_comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`);
 
 --
 -- Các ràng buộc cho bảng `tbl_order_details`

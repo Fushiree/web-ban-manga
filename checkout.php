@@ -33,11 +33,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         while ($row = mysqli_fetch_assoc($cart_result)) {
             $product_id = $row['product_id'];
             $quantity = $row['quantity'];
-            $price = $row['quantity'] * $row['product_price'];
+            $product_price = $row['product_price'];  // Lấy giá sản phẩm từ cột product_price
 
-            // Lưu chi tiết đơn hàng
-            $detail_sql = "INSERT INTO tbl_order_details (order_id, product_id, quantity, price)
-                           VALUES ($order_id, $product_id, $quantity, $price)";
+            // Tính giá trị đơn hàng
+            $price = $quantity * $product_price;
+
+            // Lưu chi tiết đơn hàng với cột product_price
+            $detail_sql = "INSERT INTO tbl_order_details (order_id, product_id, quantity, product_price)
+                        VALUES ($order_id, $product_id, $quantity, $price)";
             mysqli_query($link, $detail_sql);
         }
 

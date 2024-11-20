@@ -487,6 +487,76 @@ header:hover{
 }
 
 /*end produc-related */
+/* comment */
+.comment-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.comment-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.comment-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.comment-section button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.comment-section button:hover {
+    background-color: #218838;
+}
+
+.comments-list {
+    margin-top: 20px;
+}
+
+.comment {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.comment p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.comment p strong {
+    font-size: 14px;
+    color: #333;
+}
+
+.comment p small {
+    font-size: 12px;
+    color: #666;
+}
+/* end comment */
 /* end product */
 /* cart */
 .cart{

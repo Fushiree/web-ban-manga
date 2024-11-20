@@ -62,23 +62,22 @@ if (isset($_GET['id'])) {
             <p>Trang chủ</p> <span>&#8594;</span>
             <p><?php echo $product3['cartegory_name']; ?></p> <!-- Hiển thị tên danh mục -->
             <span>&#8594;</span> <p><?php echo $product['product_name']; ?></p>
-
-            </div>
-            <div class="product-content">
-                <div class="product-content-left">
-                    <div class="product-content-left-big-img">
-                        <!-- Hiển thị hình ảnh sản phẩm -->
-                        <img src="/admin/uploads/<?php echo $product['product_img']; ?>" alt="">
-                    </div>
-                    <div class="product-content-left-small-img">
-                        <!-- Hiển thị các hình ảnh nhỏ (nếu có) -->
-                        <?php
-                        // Lặp qua tất cả các hình ảnh mô tả sản phẩm và hiển thị chúng
-                        foreach ($images as $image) {
-                            echo '<img src="/admin/uploads/' . $image['product_img_desc'] . '" alt="">';
-                        }
-                        ?>
-                    </div>
+        </div>
+        <div class="product-content">
+            <div class="product-content-left">
+                <div class="product-content-left-big-img">
+                    <!-- Hiển thị hình ảnh sản phẩm -->
+                    <img src="/admin/uploads/<?php echo $product['product_img']; ?>" alt="">
+                </div>
+                <div class="product-content-left-small-img">
+                    <!-- Hiển thị các hình ảnh nhỏ (nếu có) -->
+                    <?php
+                    // Lặp qua tất cả các hình ảnh mô tả sản phẩm và hiển thị chúng
+                    foreach ($images as $image) {
+                        echo '<img src="/admin/uploads/' . $image['product_img_desc'] . '" alt="">';
+                    }
+                    ?>
+                </div>
             </div>
             <div class="product-content-right">
                 <div class="product-content-right-product-name">
@@ -128,9 +127,7 @@ if (isset($_GET['id'])) {
                         </div>
                         <div class="product-content-right-bottom-content">
                             <div class="product-content-right-bottom-content-chitiet">
-                                <?php 
-                                echo $product['product_desc'];
-                                ?>
+                                <?php echo $product['product_desc']; ?>
                             </div>
                             <div class="product-content-right-bottom-content-mota">
                                 <?php echo $product['product_description']; ?> <!-- Hiển thị mô tả sản phẩm -->
@@ -142,6 +139,43 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 </section>
+
+<!-- Form bình luận -->
+<section class="comment-section">
+    <div class="container">
+        <h2>Bình luận</h2>
+        <form action="submit_comment.php" method="POST">
+            <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+            <textarea name="comment" rows="4" placeholder="Nhập bình luận của bạn..." required></textarea>
+            <button type="submit">Gửi bình luận</button>
+        </form>
+        <!-- Hiển thị các bình luận đã gửi -->
+        <div class="comments-list">
+            <?php
+            // Truy vấn các bình luận của sản phẩm
+            $comment_sql = "
+                SELECT c.comment, c.created_at, u.name 
+                FROM tbl_comments AS c 
+                INNER JOIN tbl_user AS u ON c.user_id = u.user_id 
+                WHERE c.product_id = $product_id 
+                ORDER BY c.created_at DESC";
+            $comment_result = mysqli_query($link, $comment_sql);
+            
+            if (mysqli_num_rows($comment_result) > 0) {
+                while ($comment = mysqli_fetch_assoc($comment_result)) {
+                    echo '<div class="comment">';
+                    echo '<p><strong>' . htmlspecialchars($comment['name']) . '</strong>: ' . htmlspecialchars($comment['comment']) . '</p>';
+                    echo '<p><small>' . $comment['created_at'] . '</small></p>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<p>Chưa có bình luận nào.</p>';
+            }
+            ?>
+        </div>
+    </div>
+</section>
+
 
 <!-- product-related -->
 <section class="product-related container">
